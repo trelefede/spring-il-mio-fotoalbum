@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+ <html xmlns:th="http://www.thymeleaf.org">
+ <head>
+ <meta charset="UTF-8">
+ <title>titolo</title>
+ </head>
+<tbody>
+			    <tr th:each="photo : ${photos}">
+			      <td th:text="${photo.getTitle()}"></td>
+			      <td th:text="${photo.getDescription()}"></td>
+			      <td><img class="img-thumbnail" width="150" height="150" th:src="${photo.getUrl}"></img></td>
+			      <td th:text="${photo.getTag}"></td>
+			      
+			      <td><a class="btn btn-primary" th:href="@{/photos/{id}(id=${photo.getId()})}"><i class="fa-solid fa-magnifying-glass"></i></a></td>
+			      <td><a class="btn btn-primary" th:href="@{/photos/edit/{id}(id=${photo.getId()})}"><i class="fa-regular fa-pen-to-square"></i></a></td>
+			      <td>
+			      	<form action="#" th:action="@{/photos/delete/{id} (id=${photo.getId()})}" method="post">
+			      		<button class="btn btn-primary" type="submit" id="submitButton"><i class="fa-solid fa-trash-can"></i></button>
+			      	</form> 
+			      </td>
+			      
+			    </tr>
+			  </tbody>
+ </html>
