@@ -5,10 +5,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Comment {
@@ -19,14 +18,12 @@ public class Comment {
 
 	@NotNull(message = "Nome non può essere nullo")
 	@NotEmpty(message = "Nome non può essere vuoto")
-	@Min(value = 3, message = "Nome troppo corto")
-	@Max(value = 50, message = "Nome troppo lungo")
+	@Size(min = 3, max = 50, message = "Nome troppo corto/lungo")
 	private String name;
 
 	@NotNull(message = "Commento non può essere nullo")
 	@NotEmpty(message = "Commento non può essere vuoto")
-	@Min(value = 2, message = "Nome troppo corto")
-	@Max(value = 500, message = "Nome troppo lungo")
+	@Size(min = 2, max = 500, message = "Commento troppo corto/lungo")
 	private String text;
 
 	@ManyToOne

@@ -9,10 +9,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Photo {
@@ -23,31 +22,28 @@ public class Photo {
 
 	@NotNull(message = "Titolo non può essere nullo")
 	@NotEmpty(message = "Titolo non può essere vuoto")
-	@Min(value = 3, message = "Titolo troppo corto")
-	@Max(value = 50, message = "Titolo troppo lungo")
+	@Size(min = 3, max = 50, message = "Titolo troppo corto/lungo")
 	private String title;
 
-	@Min(value = 2, message = "Descrizione troppo corta")
-	@Max(value = 500, message = "Descrizione troppo lunga")
+	@Size(min = 10, max = 500, message = "Descrizione troppo corta/lunga")
 	private String description;
 
 	@NotNull(message = "Url immagine non può essere nullo")
 	@NotEmpty(message = "Url immagine non può essere vuoto")
-	@Min(value = 10, message = "Url troppo corto")
-	@Max(value = 2147483647, message = "Url troppo lungo")
+	@Size(min = 10, max = 999999999, message = "Url troppo corto/lungo")
 	@Column(name = "image_url")
 	private String url;
 
 	@NotNull(message = "I tag non possono essere nulli")
 	@NotEmpty(message = "I tag non possono essere vuoti")
-	@Max(value = 200, message = "Tag troppo lunghi")
+	@Size(min = 1, max = 200, message = "Tag troppo corto/lungo")
 	private String tag;
 
 	@NotNull(message = "La visibilità non può essere nulla")
 	@NotEmpty(message = "La visibilità non può essere vuota")
 	private Boolean visible;
 
-	@ManyToMany(mappedBy = "photos")
+	@ManyToMany(mappedBy = "photo")
 	private List<Category> categories;
 
 	@OneToMany(mappedBy = "photo")

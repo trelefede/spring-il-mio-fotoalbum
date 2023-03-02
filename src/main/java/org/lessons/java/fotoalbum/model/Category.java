@@ -7,10 +7,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Category {
@@ -21,12 +20,11 @@ public class Category {
 
 	@NotNull(message = "Nome categoria non può essere nullo")
 	@NotEmpty(message = "Nome categoria non può essere vuoto")
-	@Min(value = 3, message = "Nome categoria troppo corto")
-	@Max(value = 50, message = "Nome categoria troppo lungo")
+	@Size(min = 3, max = 50, message = "Nome categoria troppo corto/lungo")
 	private String name;
 
 	@ManyToMany
-	private List<Photo> photos;
+	private List<Photo> photo;
 
 	public Integer getId() {
 		return id;
@@ -45,11 +43,11 @@ public class Category {
 	}
 
 	public List<Photo> getPhotos() {
-		return photos;
+		return photo;
 	}
 
 	public void setPhotos(List<Photo> photos) {
-		this.photos = photos;
+		this.photo = photos;
 	}
 
 }
