@@ -32,7 +32,7 @@
 				      <td><a class="btn btn-primary" th:href="@{/photos/{id}(id=${photo.getId()})}"><i class="fa-solid fa-magnifying-glass"></i></a></td>
 				      <td><a class="btn btn-primary" th:href="@{/photos/edit/{id}(id=${photo.getId()})}"><i class="fa-regular fa-pen-to-square"></i></a></td>
 				      <td>
-				      	<form action="#" th:action="@{/photos/delete/{id} (id=${photo.getId()})}" method="post">
+				      	<form action="delete" th:action="@{/photos/delete/{id} (id=${photo.getId()})}" method="post">
 				      		<button class="btn btn-primary" type="submit" id="submitButton"><i class="fa-solid fa-trash-can"></i></button>
 				      	</form> 
 				      </td>
