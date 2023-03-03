@@ -20,7 +20,7 @@ import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/photos")
-public class index {
+public class PhotoController {
 
 	@Autowired
 	private PhotoRepository photoRepo;

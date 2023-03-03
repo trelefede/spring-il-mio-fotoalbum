@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+ <html xmlns:th="http://www.thymeleaf.org">
+ <head>
+ 	<div th:replace="~{fragments :: head}"></div>
+ 	<title>Modifica categoria</title>
+ </head>
+ <body>
+ <div th:replace="~{fragments :: navbar}"></div>
+ 
+  <div class="container">
+ 	<h1>Modifica categoria</h1>
+ 	<div class="row">
+ 		<div class="col">
+ 			<form 
+ 				id="category-form"
+ 				th:object="${category}"
+ 				th:action="@{/categories/edit/{id}(id=${category.getId})}"
+ 				method="post">
+ 				
+ 				<label for="name" class="form-label">Nome categoria</label>
+ 				<input class="form-control mb-3" type="text" id="name" th:field="*{name}" th:errorClass="is-invalid">
+ 				<div th:if="${#fields.hasErrors('name')}" class="invalid-feedback">
+ 					<ul>
+ 						<li th:each="err : ${#fields.errors('name')}" th:text="${err}"></li>
+ 					</ul>
+ 				</div>
+ 				
+ 				<button type="submit" class="btn btn-primary">Salva modifiche</i></button>
+ 				<button class="btn btn-primary"><a class="nav-link" th:href="@{/categories}">Annulla</a></button>
+ 			</form>
+ 		</div>
+ 	</div>
+ </div>
+
+ </body>
+ </html>

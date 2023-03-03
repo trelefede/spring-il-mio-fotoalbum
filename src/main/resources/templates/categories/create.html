@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+ <html xmlns:th="http://www.thymeleaf.org">
+ <head>
+ 	<div th:replace="~{fragments :: head}"></div>
+ 	<title>Aggiungi categoria</title>
+ </head>
+ <body>
+ 
+ <div th:replace="~{fragments :: navbar}"></div>
+ 
+  <div class="container">
+ 	<h1>Aggiungi nuova categoria</h1>
+ 	<div class="row">
+ 		<div class="col">
+ 			<form 
+ 				id="category-form"
+ 				th:object="${category}"
+ 				th:action="@{/categories/create}"
+ 				method="post">
+ 				
+ 				<label for="name" class="form-label">Nome nuova categoria</label>
+ 				<input class="form-control mb-3" type="text" id="name" th:field="*{name}" th:errorClass="is-invalid">
+ 				<div th:if="${#fields.hasErrors('name')}" class="invalid-feedback">
+ 					<ul>
+ 						<li th:each="err : ${#fields.errors('name')}" th:text="${err}"></li>
+ 					</ul>
+ 				</div>
+ 				
+ 				<button type="submit" class="btn btn-primary">Salva</button>
+ 			</form>
+ 		</div>
+ 	</div>
+ </div>
+
+ </body>
+ </html>
