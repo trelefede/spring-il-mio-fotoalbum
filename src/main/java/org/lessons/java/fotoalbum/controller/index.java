@@ -62,6 +62,25 @@ public class index {
 
 	}
 
+	@GetMapping("/edit/{id}")
+	public String edit(@PathVariable("id") Integer id, Model model) {
+		List<Category> categories = categoryRepo.findAll();
+		model.addAttribute("categories", categories);
+		model.addAttribute("photo", photoRepo.getReferenceById(id));
+		return ("photos/edit");
+	}
+
+	@PostMapping("/edit/{id}")
+	public String update(@Valid @ModelAttribute("photo") Photo formPhoto, BindingResult bindingResult, Model model) {
+
+		if (bindingResult.hasErrors()) {
+			return "photos/edit";
+		}
+
+		photoRepo.save(formPhoto);
+		return "redirect:/photos";
+	}
+
 	@PostMapping("/delete/{id}")
 	public String delete(@PathVariable("id") Integer id) {
 		photoRepo.deleteById(id);

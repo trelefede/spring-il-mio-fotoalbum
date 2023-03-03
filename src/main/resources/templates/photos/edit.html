@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+ <html xmlns:th="http://www.thymeleaf.org">
+ <head>
+ 	<div th:replace="~{fragments :: head}"></div>
+ 	<title>Modifica foto</title>
+ </head>
+<body>
+ 
+ <div th:replace="~{fragments :: navbar}"></div>
+ 
+  <div class="container">
+ 	<h1>MOdifica foto</h1>
+ 	<div class="row">
+ 		<div class="col">
+ 			<form 
+ 				id="photo-form"
+ 				th:object="${photo}"
+ 				th:action="@{/photos/edit/{id}(id=${photo.getId})}"
+ 				method="post">
+ 				
+ 				<label for="title" class="form-label">Titolo</label>
+ 				<input class="form-control mb-3" type="text" id="title" th:field="*{title}" th:errorClass="is-invalid">
+ 				<div th:if="${#fields.hasErrors('title')}" class="invalid-feedback">
+ 					<ul>
+ 						<li th:each="err : ${#fields.errors('title')}" th:text="${err}"></li>
+ 					</ul>
+ 				</div>
+ 				
+ 				<label for="image_url" class="form-label">Url foto</label>
+ 				<input class="form-control mb-3" type="text" id="image_url" th:field="*{url}" th:errorClass="is-invalid">
+ 				<div th:if="${#fields.hasErrors('url')}" class="invalid-feedback">
+ 					<ul>
+ 						<li th:each="err : ${#fields.errors('url')}" th:text="${err}"></li>
+ 					</ul>
+ 				</div>
+ 				
+ 				<label for="description" class="form-label">Descrizione foto</label>
+ 				<input class="form-control mb-3" type="text" id="description" th:field="*{description}" th:errorClass="is-invalid">
+ 				<div th:if="${#fields.hasErrors('description')}" class="invalid-feedback">
+ 					<ul>
+ 						<li th:each="err : ${#fields.errors('description')}" th:text="${err}"></li>
+ 					</ul>
+ 				</div>
+ 				
+ 				<label for="tag" class="form-label">Tag</label>
+ 				<input class="form-control mb-3" type="text" id="tag" th:field="*{tag}" th:errorClass="is-invalid">
+ 				<div th:if="${#fields.hasErrors('tag')}" class="invalid-feedback">
+ 					<ul>
+ 						<li th:each="err : ${#fields.errors('tag')}" th:text="${err}"></li>
+ 					</ul>
+ 				</div>
+ 				
+ 				<div class="form-check form-switch">
+				  <input class="form-check-input" type="checkbox" id="visible" name="visible" th:checked="${photo.visible}">
+				  <label class="form-check-label" for="visible">Visibile a tutti?</label>
+				</div>
+ 				
+ 				<div class="form-check" th:each="category : ${categories}">
+ 					<label class="form-check-label" th:for="${category.name}" th:text="${category.name}"></label>
+					<input class="form-check-input" type="checkbox" th:value="${category.id}" th:id="${category.name}" name="categories" th:field="*{categories}">
+				</div>
+ 				
+ 				<button type="submit" class="btn btn-primary">Modifica</button>
+ 				<button class="btn btn-primary"><a class="nav-link" th:href="@{/photos}">Annulla</a></button>
+ 			</form>
+ 		</div>
+ 	</div>
+ </div>
+
+ </body>
+ </html>
