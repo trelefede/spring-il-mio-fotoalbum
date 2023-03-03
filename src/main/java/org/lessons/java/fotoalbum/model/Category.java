@@ -23,7 +23,7 @@ public class Category {
 	@Size(min = 3, max = 50, message = "Nome categoria troppo corto/lungo")
 	private String name;
 
-	@ManyToMany
+	@ManyToMany(mappedBy = "categories")
 	private List<Photo> photo;
 
 	public Integer getId() {

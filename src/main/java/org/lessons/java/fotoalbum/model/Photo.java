@@ -42,7 +42,7 @@ public class Photo {
 	@NotNull(message = "La visibilità non può essere nulla")
 	private Boolean visible = false;
 
-	@ManyToMany(mappedBy = "photo")
+	@ManyToMany
 	private List<Category> categories;
 
 	@OneToMany(mappedBy = "photo")
