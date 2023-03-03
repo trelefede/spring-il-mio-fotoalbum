@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+ <html xmlns:th="http://www.thymeleaf.org">
+ <head>
+ 	<th:block th:fragment="head(title)">
+	     <meta charset="UTF-8">
+	     <meta name="viewport" content="width=device-width, initial-scale=1">
+	     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}"/>
+	     <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/6.3.0/css/all.min.css} "/>
+ 	</th:block>
+ </head>
+ 
+ <div th:fragment="navbar" class="row my4-4">
+ 	<div class="col-12">
+ 		 <ul class="nav nav-tabs">
+		 	<li class="nav-item" >
+		 		<a class="nav-link" th:href="@{/photos}">Foto</a>
+		 	</li>
+		 	<li class="nav-item" >
+		 		<a class="nav-link" th:href="@{/photos/create}">Aggiungi foto</a>
+		 	</li>
+		 	<li class="nav-item" >
+		 		<a class="nav-link" th:href="@{/photos/categories}">Categorie</a>
+		 	</li>
+		 </ul>
+ 	</div>
+ </div>
+
+ <div th:fragment="search" class="row my-4">
+	<div class="col-6">
+		<form action="">
+		<label for="fname">Cerca foto per titolo:</label>
+		<input type="text" name="">  
+		<input type="submit" value="Cerca">
+		</form>
+	</div>
+ </div>
+ 
+ <body>
+ 
+
+ </body>
+ </html>

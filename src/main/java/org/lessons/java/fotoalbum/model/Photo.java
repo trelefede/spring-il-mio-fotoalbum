@@ -25,7 +25,7 @@ public class Photo {
 	@Size(min = 3, max = 50, message = "Titolo troppo corto/lungo")
 	private String title;
 
-	@Size(min = 10, max = 500, message = "Descrizione troppo corta/lunga")
+	@Size(min = 5, max = 500, message = "Descrizione troppo corta/lunga")
 	private String description;
 
 	@NotNull(message = "Url immagine non può essere nullo")
@@ -40,8 +40,7 @@ public class Photo {
 	private String tag;
 
 	@NotNull(message = "La visibilità non può essere nulla")
-	@NotEmpty(message = "La visibilità non può essere vuota")
-	private Boolean visible;
+	private Boolean visible = false;
 
 	@ManyToMany(mappedBy = "photo")
 	private List<Category> categories;

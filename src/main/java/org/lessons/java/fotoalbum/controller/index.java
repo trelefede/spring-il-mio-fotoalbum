@@ -23,6 +23,8 @@ public class index {
 
 	@Autowired
 	private PhotoRepository photoRepo;
+
+	@Autowired
 	private CategoryRepository categoryRepo;
 
 	@GetMapping
@@ -55,7 +57,7 @@ public class index {
 		}
 
 		photoRepo.save(formPhoto);
-		return "redirect:/photos/" + photoRepo.save(formPhoto).getId();
+		return "redirect:/photos";
 
 	}
 

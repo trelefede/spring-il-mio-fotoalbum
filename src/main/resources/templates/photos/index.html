@@ -1,24 +1,46 @@
 <!DOCTYPE html>
  <html xmlns:th="http://www.thymeleaf.org">
  <head>
- <meta charset="UTF-8">
- <title>titolo</title>
+ 	<div th:replace="~{fragments :: head}"></div>
+ 	<title>Foto</title>
  </head>
-<tbody>
-			    <tr th:each="photo : ${photos}">
-			      <td th:text="${photo.getTitle()}"></td>
-			      <td th:text="${photo.getDescription()}"></td>
-			      <td><img class="img-thumbnail" width="150" height="150" th:src="${photo.getUrl}"></img></td>
-			      <td th:text="${photo.getTag}"></td>
-			      
-			      <td><a class="btn btn-primary" th:href="@{/photos/{id}(id=${photo.getId()})}"><i class="fa-solid fa-magnifying-glass"></i></a></td>
-			      <td><a class="btn btn-primary" th:href="@{/photos/edit/{id}(id=${photo.getId()})}"><i class="fa-regular fa-pen-to-square"></i></a></td>
-			      <td>
-			      	<form action="#" th:action="@{/photos/delete/{id} (id=${photo.getId()})}" method="post">
-			      		<button class="btn btn-primary" type="submit" id="submitButton"><i class="fa-solid fa-trash-can"></i></button>
-			      	</form> 
-			      </td>
-			      
-			    </tr>
-			  </tbody>
+ 
+ <div th:replace="~{fragments :: navbar}"></div>
+ 
+ <div class="container">
+ 
+ 	<h1 class="text-center mt-4">Elenco Pizze</h1>
+ 
+ 	<div class="row">
+ 		<div class="col">
+ 			<table class="table" th:if="${!photos.isEmpty()}">
+				<thead>
+				    <tr>
+				      <th scope="col">Titolo</th>
+				      <th scope="col">Foto</th>
+				      <th scope="col">Descrizione</th>
+				      <th scope="col">Tag</th>
+				    </tr>
+				</thead>
+				<tbody>
+				    <tr th:each="photo : ${photos}">
+				      <td th:text="${photo.getTitle()}"></td>
+				      <td th:text="${photo.getDescription()}"></td>
+				      <td><img class="img-thumbnail" width="150" height="150" th:src="${photo.getUrl}"></img></td>
+				      <td th:text="${photo.getTag}"></td>
+				      
+				      <td><a class="btn btn-primary" th:href="@{/photos/{id}(id=${photo.getId()})}"><i class="fa-solid fa-magnifying-glass"></i></a></td>
+				      <td><a class="btn btn-primary" th:href="@{/photos/edit/{id}(id=${photo.getId()})}"><i class="fa-regular fa-pen-to-square"></i></a></td>
+				      <td>
+				      	<form action="#" th:action="@{/photos/delete/{id} (id=${photo.getId()})}" method="post">
+				      		<button class="btn btn-primary" type="submit" id="submitButton"><i class="fa-solid fa-trash-can"></i></button>
+				      	</form> 
+				      </td>
+				    </tr>
+				</tbody>
+				</table>
+			<div th:if="${photos.isEmpty()}">Nessuna pizza</div>
+ 		</div>
+ 	</div>
+ </div>
  </html>
