@@ -2,6 +2,8 @@ package org.lessons.java.fotoalbum.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -42,6 +44,7 @@ public class Photo {
 	@NotNull(message = "La visibilità non può essere nulla")
 	private Boolean visible = false;
 
+	@JsonIgnore
 	@ManyToMany
 	private List<Category> categories;
 
