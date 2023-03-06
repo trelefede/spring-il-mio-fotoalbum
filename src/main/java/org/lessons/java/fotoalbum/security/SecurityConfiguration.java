@@ -20,12 +20,13 @@ public class SecurityConfiguration {
 				// ADMIN
 				.requestMatchers("/photos", "/photos/**", "/categories/**").hasAuthority("ADMIN") //
 				.requestMatchers(HttpMethod.POST, "/photos/**", "/categories/**").hasAuthority("ADMIN") //
-				// USER + ADMIN
-				.requestMatchers("/script/**", "/my-photos/**", "/api/photos/**").hasAnyAuthority("ADMIN", "USER")
+
 				// ALL
+				.requestMatchers("/script/**", "/my-photos/**", "/api/photos/**").permitAll()//
 				.requestMatchers("/**").permitAll()//
 				.and().formLogin().and().logout().and().exceptionHandling() //
-				.accessDeniedPage("/access-denied.html");
+				.accessDeniedPage("/access-denied.html") //
+				.and().csrf().disable();
 
 		return http.build();
 	}

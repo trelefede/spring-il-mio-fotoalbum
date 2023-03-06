@@ -27,3 +27,20 @@ function showPhoto(photoId) {
             console.error('Errore chiamata', response);
         })
 }
+
+
+ function addComment() {
+     const comment = {
+         name: document.querySelector('#name').value,
+         text: document.querySelector('#text').value
+     }
+
+     axios
+     	.post(`http://localhost:8080/api/photos/${photoId}/comment`, comment)
+     	.then((response) => {
+         console.log("commento ok")
+         location.href = `/my-photos/show?id=${photoId}`
+     }).catch((response) => {
+         console.log("errore commento")
+     })
+ }

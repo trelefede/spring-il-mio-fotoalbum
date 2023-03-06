@@ -1,5 +1,7 @@
 package org.lessons.java.fotoalbum.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,6 +29,7 @@ public class Comment {
 	private String text;
 
 	@ManyToOne
+	@JsonIgnore
 	private Photo photo;
 
 	public Integer getId() {
