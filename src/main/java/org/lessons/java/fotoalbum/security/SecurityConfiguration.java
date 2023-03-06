@@ -20,7 +20,7 @@ public class SecurityConfiguration {
 				// ADMIN
 				.requestMatchers("/photos", "/photos/**", "/categories/**").hasAuthority("ADMIN") //
 				.requestMatchers(HttpMethod.POST, "/photos/**", "/categories/**").hasAuthority("ADMIN") //
-				// USER
+				// USER + ADMIN
 				.requestMatchers("/script/**", "/my-photos/**", "/api/photos/**").hasAnyAuthority("ADMIN", "USER")
 				// ALL
 				.requestMatchers("/**").permitAll()//

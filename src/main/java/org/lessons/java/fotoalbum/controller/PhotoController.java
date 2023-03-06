@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.validation.Valid;
 
@@ -29,8 +30,18 @@ public class PhotoController {
 	private CategoryRepository categoryRepo;
 
 	@GetMapping
-	public String index(Model model) {
-		List<Photo> photos = photoRepo.findAll();
+	public String index(@RequestParam(name = "search", required = false) String search, Model model) {
+		List<Photo> photos;
+
+		if (search != null && !search.isEmpty()) {
+			photos = photoRepo.findByTitleLike("%" + search + "%");
+			if (photos.isEmpty()) {
+				photos = photoRepo.findByTagLike("%" + search + "%");
+			}
+		} else {
+			photos = photoRepo.findAll();
+		}
+
 		model.addAttribute("photos", photos);
 		return "photos/index";
 	}

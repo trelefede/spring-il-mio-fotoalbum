@@ -10,6 +10,7 @@
  <div class="container">
  
  	<h1 class="text-center mt-4">Elenco Foto</h1>
+ 	<div th:replace="~{fragments :: search}"></div>
  
  	<div class="row">
  		<div class="col">
@@ -39,7 +40,7 @@
 				    </tr>
 				</tbody>
 				</table>
-			<div th:if="${photos.isEmpty()}">Nessuna pizza</div>
+			<div th:if="${photos.isEmpty()}">Nessuna foto</div>
  		</div>
  	</div>
  </div>

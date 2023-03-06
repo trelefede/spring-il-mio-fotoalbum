@@ -21,6 +21,9 @@
 		 	<li class="nav-item" >
 		 		<a class="nav-link" th:href="@{/categories}">Categorie</a>
 		 	</li>
+		 	<li class="nav-item" >
+		 		<a class="nav-link" th:href="@{/logout}">Logout</a>
+		 	</li>
 		 </ul>
  	</div>
  </div>
@@ -28,8 +31,8 @@
  <div th:fragment="search" class="row my-4">
 	<div class="col-6">
 		<form action="">
-		<label for="fname">Cerca foto per titolo:</label>
-		<input type="text" name="">  
+		<label for="fname">Cerca foto per titolo o tag:</label>
+		<input type="text" name="search">  
 		<input type="submit" value="Cerca">
 		</form>
 	</div>
