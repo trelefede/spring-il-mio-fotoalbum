@@ -17,11 +17,13 @@ public class SecurityConfiguration {
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests() //
-				.requestMatchers("/photos/**").hasAuthority("ADMIN") //
-				.requestMatchers("/categories/**").hasAuthority("ADMIN") //
+				// ADMIN
+				.requestMatchers("/photos", "/photos/**", "/categories/**").hasAuthority("ADMIN") //
 				.requestMatchers(HttpMethod.POST, "/photos/**", "/categories/**").hasAuthority("ADMIN") //
+				// USER
 				.requestMatchers("/script/**", "/my-photos/**", "/api/photos/**").hasAnyAuthority("ADMIN", "USER")
-				.requestMatchers("/webjars/**").permitAll()//
+				// ALL
+				.requestMatchers("/**").permitAll()//
 				.and().formLogin().and().logout().and().exceptionHandling() //
 				.accessDeniedPage("/access-denied.html");
 
