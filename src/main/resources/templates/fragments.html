@@ -11,16 +11,19 @@
  
  <div th:fragment="navbar" class="row my4-4">
  	<div class="col-12">
- 		 <ul class="nav nav-tabs">
-		 	<li class="nav-item" >
-		 		<a class="nav-link" th:href="@{/photos}">Foto</a>
-		 	</li>
-		 	<li class="nav-item" >
-		 		<a class="nav-link" th:href="@{/photos/create}">Aggiungi foto</a>
-		 	</li>
-		 	<li class="nav-item" >
-		 		<a class="nav-link" th:href="@{/categories}">Categorie</a>
-		 	</li>
+ 		 <ul class="nav nav-tabs justify-content-between">
+ 		 	<div class="d-flex">
+ 		 		<li class="nav-item" >
+		 			<a class="nav-link" th:href="@{/photos}">Foto</a>
+			 	</li>
+			 	<li class="nav-item" >
+			 		<a class="nav-link" th:href="@{/photos/create}">Aggiungi foto</a>
+			 	</li>
+			 	<li class="nav-item" >
+			 		<a class="nav-link" th:href="@{/categories}">Categorie</a>
+			 	</li>
+ 		 	</div>
+		 	
 		 	<li class="nav-item" >
 		 		<a class="nav-link" th:href="@{/logout}">Logout</a>
 		 	</li>
@@ -29,10 +32,10 @@
  </div>
 
  <div th:fragment="search" class="row my-4">
-	<div class="col-6 form-control">
+	<div class="col-8">
 		<form action="">
 		<label for="fname">Cerca foto per titolo o tag:</label>
-		<input type="text" name="search" placeholder="Cerca foto per titolo o tag">  
+		<input type="text" name="search" placeholder="Cerca titolo o tag">  
 		<input type="submit" value="Cerca">
 		</form>
 	</div>

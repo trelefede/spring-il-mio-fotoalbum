@@ -9,16 +9,19 @@
  <div th:replace="~{fragments :: navbar}"></div>
  
  <div class="container">
- 	<div class="row">
+ 	<div class="row justify-content-center my-4">
  		<div class="col-4">
- 			<h3 th:text="${photo.getTitle()}"></h3>
- 			<img th:alt="${photo.getTitle()}" width="150" height="150" th:src="${photo.getUrl()}">
- 			<p th:text="${photo.getDescription()}"></p>
- 			<p th:text="${photo.getTag()}"></p>
- 		</div>
- 		
- 	</div>
- 	<a class="btn btn-primary" th:href="@{/photos/edit/{id}(id=${photo.getId()})}"><i class="fa-regular fa-pen-to-square"></i></a>
+	 		<div class="card">
+			  <img th:alt="${photo.getTitle()}" th:src="${photo.getUrl()}">
+			  <div class="card-body">
+			  	<p>Tag: <span th:text="${photo.getTag()}"></span></p>
+			    <h5 class="card-title" th:text="${photo.getTitle()}"></h5>
+			    <p class="card-text" th:text="${photo.getDescription()}"></p>
+			    <a class="btn btn-primary" th:href="@{/photos/edit/{id}(id=${photo.getId()})}">Modifica</a>
+			  </div>
+			</div>
+		</div>
+	</div>
  </div>
  
 
