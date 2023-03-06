@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -48,7 +49,7 @@ public class Photo {
 	@ManyToMany
 	private List<Category> categories;
 
-	@OneToMany(mappedBy = "photo")
+	@OneToMany(mappedBy = "photo", cascade = CascadeType.ALL)
 	private List<Comment> comments;
 
 	public Integer getId() {
