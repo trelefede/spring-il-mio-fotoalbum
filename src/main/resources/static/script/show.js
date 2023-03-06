@@ -17,11 +17,27 @@ function showPhoto(photoId) {
                     <h3>${photo.title}</h3>
                     <img alt="${photo.title}" width="150" height="150" src="${photo.url}">
                     <p>${photo.description}</p>
+                </div>
+                <div class="col-3"> 
+                    <h3>Tag</h3>
                     <p>${photo.tag}</p>
                 </div>
+                <div class="col-3" id="show_comments"> 
+                    <h3>Commenti</h3>
+                </div>
             </div>
-
+            
             `
+            
+            photo.comments.forEach((comment) => {
+				document.querySelector('#show_comments').innerHTML += `
+				
+				<h6 class="fw-bold">${comment.name}</h6>
+                <p>${comment.text}</p>
+				
+				`
+			})
+            
         })
         .catch((response) => {
             console.error('Errore chiamata', response);
