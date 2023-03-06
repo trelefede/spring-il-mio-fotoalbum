@@ -10,21 +10,24 @@ function photoList() {
         .then((response) => {
             console.log("richiesta ok", response);
             response.data.forEach(photo => {
-                document.querySelector('#photo_table').innerHTML += `
+				if(photo.visible){
+					console.log(photo.visible);
+					document.querySelector('#photo_table').innerHTML += `
 
-				<div class="col-3">
-					<div class="card">
-					  <img alt="${photo.title}" src="${photo.url}">
-					  <div class="card-body">
-					  	<p>Tag: <span>${photo.tag}</span></p>
-					    <h5 class="card-title">${photo.title}</h5>
-					    <p class="card-text">${photo.description}</p>
-					    <a class="btn btn-primary" href="./my-photos/show?id=${photo.id}"><i class="fa-solid fa-magnifying-glass"></i></a>
-					  </div>
-					</div>
-				</div>
-                
-                `
+						<div class="col-3">
+							<div class="card">
+							  <img alt="${photo.title}" src="${photo.url}">
+							  <div class="card-body">
+							  	<p>Tag: <span>${photo.tag}</span></p>
+							    <h5 class="card-title">${photo.title}</h5>
+							    <p class="card-text">${photo.description}</p>
+							    <a class="btn btn-primary" href="./my-photos/show?id=${photo.id}"><i class="fa-solid fa-magnifying-glass"></i></a>
+							  </div>
+							</div>
+						</div>
+		                
+		            `
+				} 
             });
         })
         .catch((response) => {
