@@ -14,11 +14,11 @@ function photoList() {
 					console.log(photo.visible);
 					document.querySelector('#photo_table').innerHTML += `
 
-						<div class="col-3">
+						<div class="col-3 photo">
 							<div class="card">
 							  <img alt="${photo.title}" src="${photo.url}">
 							  <div class="card-body">
-							  	<p>Tag: <span>${photo.tag}</span></p>
+							  	<p>Tag: <span class="photo-tag">${photo.tag}</span></p>
 							    <h5 class="card-title">${photo.title}</h5>
 							    <p class="card-text">${photo.description}</p>
 							    <a class="btn btn-primary" href="./my-photos/show?id=${photo.id}"><i class="fa-solid fa-magnifying-glass"></i></a>
@@ -42,7 +42,7 @@ function search() {
 	const photos = document.querySelectorAll('.photo');
 	photos.forEach((photo) => {
 		console.log(photo);
-		const name = photo.querySelector('.photo-title').textContent.toLowerCase();
+		const name = photo.querySelector('.card-title').textContent.toLowerCase();
 		const tag = photo.querySelector('.photo-tag').textContent.toLowerCase();
 		console.log(name);
 		if(name.includes(value) || tag.includes(value)){
